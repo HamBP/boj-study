@@ -1,7 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 
-res = requests.get('https://solved.ac/profile/sjy9484')
+bojID = 'sjy9484'
+res = requests.get('https://solved.ac/profile/' + bojID)
 soup = BeautifulSoup(res.content, 'html.parser')
-rating = soup.find('span', 'ProfileRatingCard__AcRatingDisplay-sc-989yd6-0 jaNtBE')
+ratingTag = soup.find('span', 'ProfileRatingCard__AcRatingDisplay-sc-989yd6-0 jaNtBE')
+rating = ratingTag.contents[0].contents[0]
 print(rating)
